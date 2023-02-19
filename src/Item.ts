@@ -220,6 +220,6 @@ export class BulkWriteItem<TSchema extends Document = any> {
 	}
 }
 
-export function getItem(collection: Collection, colname?: string){
+export function getItem<TSchema extends Document>(collection: Collection<TSchema>, colname?: string){
 	return new BulkWriteItem(collection, colname);
 }
