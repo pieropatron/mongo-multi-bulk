@@ -1,0 +1,41 @@
+{
+  "name": "@pieropatron/mongo-multi-bulk",
+  "version": "1.0.0",
+  "description": "helper to collect mongodb bulkWrite operations for several collections for further save",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "tsc",
+    "test": "ts-node test/test.ts",
+    "eslint": "eslint --cache --ext .js,.jsx,.ts,.tsx src",
+    "eslint:dump": "eslint --print-config ./.eslintrc.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pieropatron/mongo-multi-bulk.git"
+  },
+  "keywords": [
+    "mongo",
+    "multi",
+    "bulk",
+    "writer"
+  ],
+  "author": "pieropatron",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pieropatron/mongo-multi-bulk/issues"
+  },
+  "homepage": "https://github.com/pieropatron/mongo-multi-bulk#readme",
+  "devDependencies": {
+    "@types/node": "^16.18.12",
+    "@typescript-eslint/eslint-plugin": "^5.45.1",
+    "@typescript-eslint/parser": "^5.45.1",
+    "eslint": "^8.29.0",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "mongodb": "~4.*.*"
+  }
+}
