@@ -27,6 +27,7 @@ Returns instance of `BulkWriteItem<TSchema extends Document>`
 
 ## Usage:
 ``` ts
+import MMB from '@pieropatron/mongo-multi-bulk';
 const collection = db.collection<{name: string, age: number}>("test_collection");
 const bwi = MMB.getItem(collection, "test");
 
@@ -57,11 +58,12 @@ We have following methods and properties for BulkWriteItem:
 * InsertOne, InsertMany, replaceOne, updateOne, updateMany, deleteOne, deleteMany: These are helpers for push corresponded operations. Their arguments are very similar with operations options. All of these methods returns `this`, which is instance of BulkWriteItem;
 * `concat(...items: BulkWriteItem<TSchema>[])`. Concat with another BulkWriteItem(s). Note: this method mutates current BulkWriteItem.
 * `execute(options?: BulkWriteOptions): Result`. Execute all stored bulkWrite operations and flush operations array. Result there has following structure:
-** colname: string. Collection name (BulkWriteItem.colname)
-** count: number. Amount of operations being executed
-** bulk?: BulkWriteResult. result of bulkWrite. Optional, undefined if there were no operations to execute
 
-As you can see, BulkWriteItem is very similar with mongodb.OrderedBulkOperation | UnorderedBulkOperation which are results of collection.initializeOrderedBulkOp() collection.initializeUnorderedBulkOp() methods. But, as I understand, these methods are legacy and requires MongoClient to be connected. And it is recommended to use collection.bulkWrite instead of them. So, BulkWriteItem just follows these recommendations.
+* colname: string. Collection name (BulkWriteItem.colname)
+* count: number. Amount of operations being executed
+* bulk?: BulkWriteResult. result of bulkWrite. Optional, undefined if there were no operations to execute
+
+As you can see, BulkWriteItem is very similar with mongodb.OrderedBulkOperation | UnorderedBulkOperation which are results of collection.initializeOrderedBulkOp() | collection.initializeUnorderedBulkOp() methods. But, as I understand, these methods are legacy and requires MongoClient to be connected. And it is recommended to use collection.bulkWrite instead of them. So, BulkWriteItem just follows these recommendations.
 
 # fromItemsObject
 
@@ -96,10 +98,10 @@ Result of this operation have BulkWriteMulti structure, described below.
 
 ## BulkWriteMulti properties and methods
 
-** `[key: string]: BulkWriteItem`. Keys and values of wrapped object
-** `size: number`. Get size of all BulkWriteItem(s) inside
-** `keys: string[]`. Keys of wrapped object
-** `execute(options?: BulkWriteOptions): Result[]`. Executes all BulkWriteItem(s) inside. Returns array of Result structure, described above.
+* `[key: string]: BulkWriteItem`. Keys and values of wrapped object
+* `size: number`. Get size of all BulkWriteItem(s) inside
+* `keys: string[]`. Keys of wrapped object
+* `execute(options?: BulkWriteOptions): Result[]`. Executes all BulkWriteItem(s) inside. Returns array of Result structure, described above.
 
 # fromCollectionsObject
 
