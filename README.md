@@ -27,7 +27,7 @@ Returns instance of `BulkWriteItem<TSchema extends Document>`
 
 ## Usage:
 ``` ts
-import MMB from '@pieropatron/mongo-multi-bulk';
+import * as MMB from '@pieropatron/mongo-multi-bulk';
 const collection = db.collection<{name: string, age: number}>("test_collection");
 const bwi = MMB.getItem(collection, "test");
 
@@ -72,7 +72,7 @@ This method wraps object of properties BulkWriteItem to allow at once execution 
 ## Usage
 
 ``` ts
-import MMB from '@pieropatron/mongo-multi-bulk';
+import * as MMB from '@pieropatron/mongo-multi-bulk';
 
 const multi = MMB.fromItemsObject({
 	users: MMB.getItem(db.collection<{ name: string, age: number }>("users")),
@@ -110,7 +110,7 @@ This method doing the same as fromItemsObject, but have object of properties Col
 ## Usage is very similar:
 
 ``` ts
-import MMB from '@pieropatron/mongo-multi-bulk';
+import * as MMB from '@pieropatron/mongo-multi-bulk';
 
 const multi = MMB.fromCollectionsObject({
 	users: db.collection<{ name: string, age: number }>("users"),
