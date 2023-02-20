@@ -4,6 +4,8 @@ import util from 'util';
 import {BulkWriteOptions, Collection, Document} from 'mongodb';
 import {BulkWriteItem} from './Item';
 
+const inspect = Symbol.for('nodejs.util.inspect.custom');
+
 /**
  * create Multi BulkWriteItem object
  * @param items
@@ -11,14 +13,7 @@ import {BulkWriteItem} from './Item';
  */
 export function fromItemsObject<T extends Record<string, BulkWriteItem>> (items: T){
 	const keys: (keyof T)[] = Object.keys(items);
-	return {
-		[util.inspect.custom](depth, options) {
-			const newOptions = Object.assign({}, options, {
-				depth: options.depth === null ? null : options.depth - 1
-			});
-
-			return `BulkWriteMulti ${util.inspect(items, newOptions)}`;
-		},
+	const result = {
 		...items,
 		/** get size of all items */
 		get size(){
@@ -45,6 +40,14 @@ export function fromItemsObject<T extends Record<string, BulkWriteItem>> (items:
 			});
 		}
 	};
+	Object.defineProperty(result, inspect, {value: function(depth, options){
+		const newOptions = Object.assign({}, options, {
+			depth: options.depth === null ? null : options.depth - 1
+		});
+
+		return `BulkWriteMulti ${util.inspect(items, newOptions)}`;
+	}});
+	return result;
 }
 
 type _Collection<T extends Document = any> = Collection<T>;
