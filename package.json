@@ -1,6 +1,6 @@
 {
   "name": "@pieropatron/mongo-multi-bulk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "helper to collect mongodb bulkWrite operations for several collections for further save",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -26,7 +26,7 @@
   "bugs": {
     "url": "https://github.com/pieropatron/mongo-multi-bulk/issues"
   },
-  "homepage": "https://github.com/pieropatron/mongo-multi-bulk#readme",
+  "homepage": "https://github.com/pieropatron/mongo-multi-bulk",
   "devDependencies": {
     "@types/node": "^16.18.12",
     "@typescript-eslint/eslint-plugin": "^5.45.1",
@@ -37,5 +37,8 @@
   },
   "dependencies": {
     "mongodb": "~4.*.*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
