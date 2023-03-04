@@ -4,5 +4,4 @@ temp*.*
 temp*
 *.bak
 bak
-package-lock.json
 .vscode
