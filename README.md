@@ -1,16 +1,18 @@
 # mongo-multi-bulk
+
 helper to collect mongodb bulkWrite operations for several collections for further execution
+
+[![NPM version](https://img.shields.io/npm/v/@pieropatron/mongo-multi-bulk.svg?style=flat-square)](https://www.npmjs.com/package/@pieropatron/mongo-multi-bulk)
+[![NPM downloads](https://img.shields.io/npm/dm/@pieropatron/mongo-multi-bulk.svg?style=flat-square)](https://www.npmjs.com/package/@pieropatron/mongo-multi-bulk)
+[![@pieropatron/mongo-multi-bulk](https://snyk.io/advisor/npm-package/@pieropatron/mongo-multi-bulk/badge.svg)](https://snyk.io/advisor/npm-package/@pieropatron/mongo-multi-bulk)
+
 
 According to my expirience, it is often required of processing a lot of bulkWrite operations of mongodb. And, frequently, for application logic these operations should be executed for several collections at once in parallel. For example, when need to update some collection and in the same time save information about this update to collection responsible for history of changes and etc. Thus, goals of this project is to provide helpers for collect bulk write operations for every required collection with abulity of further execution, of course.
 
-NB: project written for mongodb driver version 4, tested for version mongodb@4.14.0
+NB: package depends on mongodb@4.14.0 driver.
 
 # Install
 `npm install @pieropatron/mongo-multi-bulk`
-
-or
-
-`npm install https://github.com/pieropatron/mongo-multi-bulk.git`
 
 # Import
 ``` ts
